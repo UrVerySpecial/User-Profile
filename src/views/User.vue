@@ -1,7 +1,9 @@
 <template>
-  <div>
-    <b-loading :active.sync="isLoading"/>
-    <router-view/>
+  <div class="columns">
+    <div class="column is-half is-offset-one-quarter">
+      <b-loading :active.sync="isLoading"/>
+      <router-view/>
+    </div>
   </div>
 </template>
 
