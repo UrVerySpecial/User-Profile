@@ -5,7 +5,7 @@
         <div class="media">
           <div class="media-left">
             <figure class="image is-128x128">
-              <img class="is-rounded" src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+              <img class="is-rounded" :src="user.email | gravatarUrl" alt="Placeholder image">
             </figure>
           </div>
           <div class="media-content">
@@ -19,10 +19,19 @@
 </template>
 
 <script>
+import md5 from 'md5'
+
 export default {
   props: {
     user: {
       type: Object
+    }
+  },
+  methods: {
+    test () {
+      let md5Email = md5(this.user.email)
+      console.log(md5Email)
+      return `http://www.gravatar.com/avatar/${md5Email}`
     }
   }
 }
