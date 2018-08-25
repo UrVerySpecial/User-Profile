@@ -9,7 +9,7 @@
           {{ props.row.email }}
         </b-table-column>
         <b-table-column field="name" label="FullName">
-          {{ props.row.firstName }}
+          {{ props.row.firstName | fullName(props.row.lastName) }}
         </b-table-column>
         <b-table-column field="action" label="">
           <router-link :to="{ name: 'UserDetails', params: {id: props.row.id}}">
