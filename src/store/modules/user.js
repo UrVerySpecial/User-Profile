@@ -63,7 +63,7 @@ const actions = {
     try {
       await saveUser(editedUser)
     } finally {
-      return dispatch('getUsers', false)
+      await dispatch('getUsers', false)
     }
   }
 }

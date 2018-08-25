@@ -5,7 +5,9 @@ import store from './store'
 import Buefy from 'buefy'
 import 'buefy/lib/buefy.css'
 import md5 from 'md5'
+import VeeValidate from 'vee-validate'
 
+Vue.use(VeeValidate)
 Vue.use(Buefy, {defaultIconPack: 'fas'})
 
 // filters
