@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import List from './views/List.vue'
+import UserList from './views/UserList.vue'
 import User from './views/User.vue'
-import Details from './views/Details.vue'
-import Edit from './views/Edit.vue'
+import UserDetails from './views/Details.vue'
+import UserEdit from './views/Edit.vue'
 import NewUser from './views/NewUser.vue'
 
 Vue.use(Router)
@@ -14,28 +14,28 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'list',
-      component: List
+      name: 'UserList',
+      component: UserList
     },
     {
-      name: 'new',
+      name: 'New',
       path: '/user/new',
       component: NewUser
     },
     {
-      name: 'user',
+      name: 'User',
       path: '/user/:id',
       component: User,
       children: [
         {
-          name: 'details',
+          name: 'UserDetails',
           path: 'details',
-          component: Details
+          component: UserDetails
         },
         {
-          name: 'edit',
+          name: 'UserEdit',
           path: 'edit',
-          component: Edit
+          component: UserEdit
         }
       ]
     }

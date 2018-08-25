@@ -5,8 +5,10 @@ import store from './store'
 import Buefy from 'buefy'
 import 'buefy/lib/buefy.css'
 
-Vue.use(Buefy, {
-  defaultIconPack: 'fas'})
+Vue.use(Buefy, {defaultIconPack: 'fas'})
+Vue.filter('fullName', function (firstName, lastName) {
+  return `${firstName} ${lastName}`
+})
 Vue.config.productionTip = false
 
 new Vue({
