@@ -1,19 +1,19 @@
 <template>
   <div>
-    List
-    {{users}}
-    {{isLoading}}
-    <b-icon
-        icon="coffee"
-        size="is-small">
-    </b-icon>
+    <page-title title="UserList" />
+    <user-list :users="users" :isLoading="isLoading"/>
   </div>
 </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-
+import PageTitle from '@/components/common/PageTitle'
+import UserList from '@/components/UserList'
 export default {
+  components: {
+    PageTitle,
+    UserList
+  },
   created () {
     this.getUsers()
   },

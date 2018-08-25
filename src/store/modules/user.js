@@ -45,7 +45,9 @@ const getters = {
   users: state => {
     return state.users
   },
-  isLoading: state => {}
+  isLoading: state => {
+    return state.isLoading
+  }
 }
 
 export default {
