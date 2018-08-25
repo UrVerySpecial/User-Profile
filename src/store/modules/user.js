@@ -40,7 +40,8 @@ const mutations = {
 }
 
 const actions = {
-  async getUsers ({ commit }) {
+  async getUsers ({ commit, state }) {
+    if (state.init) return // don't do anything if initial has finished
     commit('setLoading', true)
     let users = await getUsers()
     commit('setUsers', users)
