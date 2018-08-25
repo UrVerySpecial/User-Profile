@@ -1,10 +1,12 @@
 const DUMMY_USERS = [
   {
+    id: 'testuser1',
     email: 'testkang1803@gmail.com',
     firstName: 'jungmo',
     lastName: 'kang'
   },
   {
+    id: 'testuser2',
     email: 'defaultImage@gmail.com',
     firstName: 'default',
     lastName: 'user'

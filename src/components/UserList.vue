@@ -12,22 +12,16 @@
           {{ props.row.firstName }}
         </b-table-column>
         <b-table-column field="action" label="">
-          <div class="buttons">
-            <router-link :to="{ name: 'UserDetails', id: props.row.id}">
-              <button class="button is-link is-outlined">
-                <b-icon
-                  icon="pencil-alt"
-                  size="is-small">
-                </b-icon>
-              </button>
-            </router-link>
-            <button class="button is-danger is-outlined">
-              <b-icon
-                icon="trash-alt"
-                size="is-small">
-              </b-icon>
-            </button>
-          </div>
+          <router-link :to="{ name: 'UserDetails', params: {id: props.row.id}}">
+            <outline-button
+              buttonType="is-link"
+              icon="id-card"
+            />
+          </router-link>
+          <outline-button
+            buttonType="is-danger"
+            icon="trash-alt"
+          />
         </b-table-column>
       </template>
     </b-table>
@@ -35,7 +29,11 @@
 </template>
 
 <script>
+import OutlineButton from './common/OutlineButton'
 export default {
+  components: {
+    OutlineButton
+  },
   props: {
     users: {
       type: Array,
