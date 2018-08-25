@@ -1,4 +1,4 @@
-const DUMMY_USERS = [
+let DUMMY_USERS = [
   {
     id: 'testuser1',
     email: 'testkang1803@gmail.com',
@@ -20,6 +20,13 @@ const getUsers = () => {
     setTimeout(() => resolve(DUMMY_USERS), 3000)
   })
 }
+const saveUser = (editedUser) => {
+  let userIndex = DUMMY_USERS.findIndex(user => user.id === editedUser.id)
+  if (userIndex >= 0) {
+    DUMMY_USERS[userIndex] = editedUser
+  }
+  return Promise.resolve()
+}
 
 const state = {
   init: false, // for check fetch users has call or not
@@ -40,13 +47,24 @@ const mutations = {
 }
 
 const actions = {
-  async getUsers ({ commit, state }) {
-    if (state.init) return // don't do anything if initial has finished
+  async getUsers ({ commit, state }, initialFlag = true) {
+    if (initialFlag && state.init) return // call as init and if init process has finished, do nothing.
     commit('setLoading', true)
-    let users = await getUsers()
-    commit('setUsers', users)
-    commit('setLoading', false)
-    commit('setInit')
+    try {
+      let users = await getUsers()
+      commit('setUsers', users)
+    } finally {
+      commit('setLoading', false)
+      commit('setInit')
+    }
+  },
+  async editUser ({ commit, dispatch }, editedUser) {
+    commit('setLoading', true)
+    try {
+      await saveUser(editedUser)
+    } finally {
+      return dispatch('getUsers', false)
+    }
   }
 }
 const getters = {
@@ -55,7 +73,6 @@ const getters = {
   },
   userById: state => {
     return userId => state.users.find(user => {
-      console.log('userId', userId)
       return user.id === userId
     })
   },
