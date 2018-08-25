@@ -2,6 +2,8 @@
 TBD
 
 ## Project setup
+### Requirement
+- install vue-cli (vue-cli-service requires Node >=8)
 ```
 yarn install
 ```
