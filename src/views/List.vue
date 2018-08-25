@@ -2,6 +2,7 @@
   <div>
     List
     {{users}}
+    {{isLoading}}
     <b-icon
         icon="coffee"
         size="is-small">
@@ -10,13 +11,23 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
+  created () {
+    this.getUsers()
+  },
   computed: {
+    // https://vuex.vuejs.org/guide/modules.html
     ...mapGetters({
-      users: 'user/users'
+      users: 'user/users',
+      isLoading: 'user/isLoading'
     })
+  },
+  methods: {
+    ...mapActions('user', [
+      'getUsers'
+    ])
   }
 }
 </script>
