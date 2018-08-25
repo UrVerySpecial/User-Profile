@@ -22,6 +22,7 @@ const getUsers = () => {
 }
 
 const state = {
+  init: false, // for check fetch users has call or not
   isLoading: false, // for display loading spinner
   users: []
 }
@@ -32,20 +33,31 @@ const mutations = {
   },
   setUsers (state, users) {
     state.users = users
+  },
+  setInit (state) {
+    state.init = true
   }
 }
 
 const actions = {
-  async getUsers ({ commit }) {
+  async getUsers ({ commit, state }) {
+    if (state.init) return // don't do anything if initial has finished
     commit('setLoading', true)
     let users = await getUsers()
     commit('setUsers', users)
     commit('setLoading', false)
+    commit('setInit')
   }
 }
 const getters = {
   users: state => {
     return state.users
+  },
+  userById: state => {
+    return userId => state.users.find(user => {
+      console.log('userId', userId)
+      return user.id === userId
+    })
   },
   isLoading: state => {
     return state.isLoading
