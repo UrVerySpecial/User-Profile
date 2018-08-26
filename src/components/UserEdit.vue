@@ -12,12 +12,11 @@
           <b-input name="email" v-validate="'required|email'" v-model="editUser.email"/>
         </b-field>
       </div>
-      <footer class="card-footer">
-        <router-link class="card-footer-item" :to="{ name: 'UserDetails' }">
+      <footer class="modal-card-foot">
+        <router-link class="button" tag="button" :to="{ name: 'UserDetails' }">
           Cancel
         </router-link>
-        <!-- I wanted to submit at this, but normally can't submit inside a tag, and if I change this to button tag style has changed. -->
-        <a class="card-footer-item" @click="saveUser">Save</a>
+        <button class="button is-primary" type="submit" :disabled="errors.any()">Save</button>
       </footer>
     </div>
   </form>
@@ -37,8 +36,6 @@ export default {
   },
   methods: {
     saveUser () {
-      console.log('this.errors', this.errors)
-      if (this.errors.any()) return
       this.$emit('saveUser', this.editUser)
     },
     amIError (inputName) {
@@ -55,5 +52,7 @@ export default {
 </script>
 
 <style scoped>
-
+.modal-card-foot {
+  justify-content: flex-end;
+}
 </style>
