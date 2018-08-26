@@ -1,6 +1,6 @@
 <template>
   <div>
-    <page-title title="UserList" />
+    <page-title title="User List" />
     <user-list :users="users" :isLoading="isLoading"/>
   </div>
 </template>
