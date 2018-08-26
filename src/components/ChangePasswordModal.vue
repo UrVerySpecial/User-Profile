@@ -38,7 +38,7 @@
     </section>
     <footer class="modal-card-foot">
       <button class="button" type="button" @click="$parent.close()">Close</button>
-      <button class="button is-primary">Save</button>
+      <button class="button is-primary" :disabled="passwordStrength < MIN_PASSWORD_STRENGTH">Save</button>
     </footer>
     </div>
   </form>
@@ -46,6 +46,7 @@
 
 <script>
 import zxcvbn from 'zxcvbn'
+import { mapGetters, mapActions } from 'vuex'
 
 const PASSWORD_INPUT_TYPE = 'password'
 const TEXT_INPUT_TYPE = 'text'
@@ -72,11 +73,18 @@ const STRENGTH_CLASSE_AND_MSG = [
   }
 ]
 export default {
+  props: {
+    userId: {
+      type: String,
+      required: true
+    }
+  },
   data () {
     return {
       newPassword: '',
       passwordField: PASSWORD_INPUT_TYPE,
-      passwordStrength: 0
+      passwordStrength: 0,
+      MIN_PASSWORD_STRENGTH: 2
     }
   },
   computed: {
@@ -93,9 +101,28 @@ export default {
     }
   },
   methods: {
+    ...mapActions('user', [
+      'changePassword'
+    ]),
     savePassword () {
-      this.$emit('changePassword', this.newPassword)
-      this.$parent.close()
+      let payload = {
+        userId: this.userId,
+        newPassword: this.newPassword
+      }
+      try {
+        this.changePassword(payload)
+        this.$toast.open({
+          message: 'Password has changed!',
+          type: 'is-success'
+        })
+      } catch (e) {
+        this.$toast.open({
+          message: 'Error has occured',
+          type: 'is-danger'
+        })
+      } finally {
+        this.$parent.close()
+      }
     },
     changePasswordStatus () {
       if (this.passwordField === PASSWORD_INPUT_TYPE) {

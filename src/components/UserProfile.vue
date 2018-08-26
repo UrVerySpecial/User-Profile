@@ -20,7 +20,7 @@
       </router-link>
     </footer>
     <b-modal :active.sync="isChangePasswordModalActive" has-modal-card>
-      <change-password-modal @changePassword="changePassword"/>
+      <change-password-modal :userId="user.id" @changePassword="changePassword"/>
     </b-modal>
   </div>
 </template>
@@ -44,9 +44,6 @@ export default {
   methods: {
     showChangePasswordDialog () {
       this.isChangePasswordModalActive = true
-    },
-    changePassword (newPassword) {
-      console.log('changePassword', newPassword)
     }
   }
 }
