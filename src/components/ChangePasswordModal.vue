@@ -46,7 +46,7 @@
 
 <script>
 import zxcvbn from 'zxcvbn'
-import { mapGetters, mapActions } from 'vuex'
+import { mapActions } from 'vuex'
 
 const PASSWORD_INPUT_TYPE = 'password'
 const TEXT_INPUT_TYPE = 'text'
