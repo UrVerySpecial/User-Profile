@@ -17,7 +17,7 @@ let DUMMY_USERS = [
 // and return type is promise because I want to make same as real API call
 const getUsers = () => {
   return new Promise(resolve => {
-    setTimeout(() => resolve(DUMMY_USERS), 3000)
+    setTimeout(() => resolve(DUMMY_USERS), 1000)
   })
 }
 const saveUser = (editedUser) => {

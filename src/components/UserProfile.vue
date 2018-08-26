@@ -19,11 +19,23 @@
         Edit
       </router-link>
     </footer>
+    <b-modal :active.sync="isChangePasswordModalActive" has-modal-card>
+      <change-password-modal @changePassword="changePassword"/>
+    </b-modal>
   </div>
 </template>
 
 <script>
+import ChangePasswordModal from './ChangePasswordModal'
 export default {
+  data () {
+    return {
+      isChangePasswordModalActive: false
+    }
+  },
+  components: {
+    ChangePasswordModal
+  },
   props: {
     user: {
       type: Object
@@ -31,7 +43,10 @@ export default {
   },
   methods: {
     showChangePasswordDialog () {
-      // todo
+      this.isChangePasswordModalActive = true
+    },
+    changePassword (newPassword) {
+      console.log('changePassword', newPassword)
     }
   }
 }

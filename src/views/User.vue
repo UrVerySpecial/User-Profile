@@ -1,6 +1,6 @@
 <template>
   <div class="columns">
-    <div class="column is-half is-offset-one-quarter">
+    <div v-if="!isLoading" class="column is-half is-offset-one-quarter">
       <b-loading :active.sync="isLoading"/>
       <router-view/>
     </div>
