@@ -1,6 +1,7 @@
 # user-profile
-TBD
-
+- Simple User Edit Page using vuejs
+## Demo
+- https://simple-user-profile.firebaseapp.com
 ## Project setup
 ### Requirement
 - install vue-cli (vue-cli-service requires Node >=8)
@@ -47,14 +48,14 @@ and should display a strength meter.
 - Source should be documented and versioned.
 - Picture should be fetched from Gravatar using user the email, and should use a default image
 ## Additional Specs
-- I think It's better that creating list page and new user page. Because
+- I think It's better that creating list page. Because
   - It's more natural.
   - Only a few time will be taken to make that.
 
 ## Pages
 1. Profiel List
 2. Profile Details
-3. Edit/New Profile
+3. Edit Profile
 4. Change Password
 
 ## Design
