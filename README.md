@@ -2,6 +2,13 @@
 - Simple User Edit Page using vuejs
 ## Demo
 - https://simple-user-profile.firebaseapp.com
+## Study Points
+- I think this repository will be good example in following usages.
+### Vuex
+- vuex module https://github.com/UrVerySpecial/User-Profile/blob/develop/src/store/modules/user.js
+- vuex getters, actions https://github.com/UrVerySpecial/User-Profile/blob/develop/src/views/Edit.vue
+### filter
+- fetch gravatar image by filter https://github.com/UrVerySpecial/User-Profile/blob/develop/src/main.js#L18
 ## Project setup
 ### Requirement
 - install vue-cli (vue-cli-service requires Node >=8)
